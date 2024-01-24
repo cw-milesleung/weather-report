@@ -48,6 +48,22 @@ const useForecast = () => {
     }
   };
 
+  const getImperialForecast = async (city) => {
+    try {
+      const response = await fetch(
+        `${BASE_URL}/data/2.5/forecast?lat=${city.lat}&lon=${
+          city.lon
+        }&units=imperial&lang=en&appid=${import.meta.env.VITE_SOME_KEY}`
+      );
+      const data = await response.json();
+      const forecastData = { ...data.city, list: data.list.slice(0, 16) };
+      setForecast(forecastData);
+      setLoad(false);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const onOptionSelect = (option) => {
     setCity(option);
   };

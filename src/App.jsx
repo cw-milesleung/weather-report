@@ -1,4 +1,5 @@
 import Forecast from "./components/Forecast";
+import Load from "./components/Load";
 import Search from "./components/Search";
 import useForecast from "./hooks/useForecast";
 
@@ -15,9 +16,11 @@ function App() {
 
   return (
     <main className="flex justify-center items-center bg-gradient-to-br from-sky-400 via-rose-400 to-lime-400 h-[100vh] w-full">
-      {load && "Fetching data..."}
-      {forecast && <Forecast forecast={forecast} />}
-      {!forecast && (
+      {load ? (
+        <Load />
+      ) : forecast ? (
+        <Forecast forecast={forecast} />
+      ) : (
         <Search
           term={term}
           onInputChange={onInputChange}

@@ -3,7 +3,7 @@ const Degree = ({ temp }) => {
     <>
       <span>
         {temp}
-        <sup>o</sup>
+        <sup>o</sup>C
       </span>
     </>
   );
