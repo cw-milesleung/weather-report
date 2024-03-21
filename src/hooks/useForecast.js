@@ -54,8 +54,6 @@ const useForecast = () => {
       );
       const data = await response.json();
       const forecastData = { ...data.city, list: data.list.slice(0, 16) };
-      // console.log(forecastData.list[0].main);
-      // setCurrentUnit("metric");
       setForecast(forecastData);
       setLoad(false);
     } catch (e) {
@@ -72,8 +70,6 @@ const useForecast = () => {
       );
       const data = await response.json();
       const forecastData = { ...data.city, list: data.list.slice(0, 16) };
-      // console.log(forecastData.list[0].main);
-      // setCurrentUnit("imperial");
       setForecast(forecastData);
       setLoad(false);
     } catch (e) {
