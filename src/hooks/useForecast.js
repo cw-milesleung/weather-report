@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import encryptedAPIKey from "./encryptedAPIKey";
 
-const BASE_URL = "http://api.openweathermap.org";
+const BASE_URL = "https://api.openweathermap.org";
 
 const useForecast = () => {
   const [term, setTerm] = useState("");
