@@ -1,9 +1,10 @@
-const Degree = ({ temp }) => {
+const Degree = ({ temp, unit }) => {
   return (
     <>
       <span>
         {temp}
-        <sup>o</sup>C
+        <sup>o</sup>
+        {unit}
       </span>
     </>
   );

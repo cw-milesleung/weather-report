@@ -1,6 +1,6 @@
 import Degree from "./Degree";
 
-const DegreeList = ({ data, today }) => {
+const DegreeList = ({ data, today, currentUnit }) => {
   return (
     <>
       <section className="text-center">
@@ -32,7 +32,10 @@ const DegreeList = ({ data, today }) => {
               src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
             />
             <p className="text-sm font-bold">
-              <Degree temp={Math.round(item.main.temp)} />
+              <Degree
+                temp={Math.round(item.main.temp)}
+                unit={currentUnit == "metric" ? "C" : "F"}
+              />
             </p>
           </div>
         ))}

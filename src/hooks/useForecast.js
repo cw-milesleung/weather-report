@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import encryptedAPIKey from "./encryptedAPIKey";
 
 const BASE_URL = "http://api.openweathermap.org";
 
@@ -6,15 +7,12 @@ const useForecast = () => {
   const [term, setTerm] = useState("");
   const [options, setOptions] = useState([]);
   const [city, setCity] = useState(null);
-  const [forecast, setForecast] = useState(null);
   const [load, setLoad] = useState(false);
-  const [currentUnit, setCurrentUnit] = useState("");
+  const weatherAPIKey = encryptedAPIKey();
 
   const getSearchOptions = async (value) => {
     const response = await fetch(
-      `${BASE_URL}/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${
-        import.meta.env.VITE_SOME_KEY
-      }`
+      `${BASE_URL}/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${weatherAPIKey}`
     );
     const data = await response.json();
     setOptions(data);
@@ -27,50 +25,29 @@ const useForecast = () => {
     getSearchOptions(value);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (setData, unit) => {
     if (!city) return;
     setLoad(true);
-    getMetricForecast(city);
+    getForecast(city, setData, unit);
   };
 
-  useEffect(() => {
-    setCurrentUnit((prev) => (prev === "metric" ? "imperial" : "metric"));
-  }, [forecast]);
-
-  const getToggleMetric = (coord) => {
-    getMetricForecast(coord);
+  const getToggleMetric = (coord, setData) => {
+    getForecast(coord, setData, "metric");
   };
 
-  const getToggleImperial = (coord) => {
-    getImperialForecast(coord);
+  const getToggleImperial = (coord, setData) => {
+    getForecast(coord, setData, "imperial");
   };
 
-  const getMetricForecast = async (coord) => {
+  const getForecast = async (coord, setData, unit) => {
     try {
       const response = await fetch(
-        `${BASE_URL}/data/2.5/forecast?lat=${coord.lat}&lon=${
-          coord.lon
-        }&units=metric&lang=en&appid=${import.meta.env.VITE_SOME_KEY}`
+        `${BASE_URL}/data/2.5/forecast?lat=${coord.lat}&lon=${coord.lon}&units=${unit}&lang=en&appid=${weatherAPIKey}`
       );
       const data = await response.json();
       const forecastData = { ...data.city, list: data.list.slice(0, 16) };
-      setForecast(forecastData);
-      setLoad(false);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
-  const getImperialForecast = async (coord) => {
-    try {
-      const response = await fetch(
-        `${BASE_URL}/data/2.5/forecast?lat=${coord.lat}&lon=${
-          coord.lon
-        }&units=imperial&lang=en&appid=${import.meta.env.VITE_SOME_KEY}`
-      );
-      const data = await response.json();
-      const forecastData = { ...data.city, list: data.list.slice(0, 16) };
-      setForecast(forecastData);
+      setData(forecastData);
       setLoad(false);
     } catch (e) {
       console.error(e);
@@ -89,7 +66,6 @@ const useForecast = () => {
   }, [city]);
 
   return {
-    forecast,
     options,
     term,
     onOptionSelect,
@@ -98,7 +74,7 @@ const useForecast = () => {
     load,
     getToggleMetric,
     getToggleImperial,
-    currentUnit,
   };
 };
+
 export default useForecast;

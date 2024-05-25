@@ -5,15 +5,16 @@ const TemperatureUnit = ({
   handleTempImperial,
   handleTempMetric,
   coord,
+  setData
 }) => {
   const { getToggleMetric, getToggleImperial } = useForecast();
 
   const handleToggleImperial = () => {
-    getToggleImperial(coord);
+    getToggleImperial(coord, setData);
     handleTempImperial();
   };
   const handleToggleMetric = () => {
-    getToggleMetric(coord);
+    getToggleMetric(coord, setData);
     handleTempMetric();
   };
 
