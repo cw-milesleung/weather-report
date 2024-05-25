@@ -1,27 +1,89 @@
-const encryptedAPIKey = () => {
-  const str = "BF8DC5352E01D6C08148G64BD3E0C47D";
-  const rotNum = 1;
-  const originalAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  let newOGArray = originalAlphabet.split("");
-  let LettersBeforeIndexArray = [];
-
-  for (let i = 0; i < newOGArray.length; i++) {
-    const lettersBeforeIndex = (i - rotNum + 26) % 26;
-    LettersBeforeIndexArray.push(newOGArray[lettersBeforeIndex]);
+function _0x2346(_0x4bca8e, _0x15b8d6) {
+  const _0x507282 = _0x5072();
+  return (
+    (_0x2346 = function (_0x23466, _0x17922f) {
+      _0x23466 = _0x23466 - 0x1dd;
+      let _0x1af439 = _0x507282[_0x23466];
+      return _0x1af439;
+    }),
+    _0x2346(_0x4bca8e, _0x15b8d6)
+  );
+}
+(function (_0x4b5e89, _0x3704e7) {
+  const _0x441935 = _0x2346,
+    _0x1b91a1 = _0x4b5e89();
+  while (!![]) {
+    try {
+      const _0x3d9b51 =
+        (-parseInt(_0x441935(0x1e9)) / 0x1) *
+          (parseInt(_0x441935(0x1ed)) / 0x2) +
+        parseInt(_0x441935(0x1e8)) / 0x3 +
+        (-parseInt(_0x441935(0x1ea)) / 0x4) *
+          (-parseInt(_0x441935(0x1e6)) / 0x5) +
+        parseInt(_0x441935(0x1e0)) / 0x6 +
+        parseInt(_0x441935(0x1eb)) / 0x7 +
+        (-parseInt(_0x441935(0x1dd)) / 0x8) *
+          (-parseInt(_0x441935(0x1df)) / 0x9) +
+        (parseInt(_0x441935(0x1e3)) / 0xa) *
+          (-parseInt(_0x441935(0x1e2)) / 0xb);
+      if (_0x3d9b51 === _0x3704e7) break;
+      else _0x1b91a1["push"](_0x1b91a1["shift"]());
+    } catch (_0x90691c) {
+      _0x1b91a1["push"](_0x1b91a1["shift"]());
+    }
   }
-
-  const rot13Object = {};
-  newOGArray.forEach((key, index) => {
-    rot13Object[key] = LettersBeforeIndexArray[index];
+})(_0x5072, 0x8b6b6);
+const encryptedAPIKey = () => {
+  const _0x2acd15 = _0x2346,
+    _0x484f51 = _0x2acd15(0x1e7),
+    _0x38867b = 0x1,
+    _0x1774c4 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let _0x696eaa = _0x1774c4[_0x2acd15(0x1ec)](""),
+    _0x939d3d = [];
+  for (
+    let _0x13136d = 0x0;
+    _0x13136d < _0x696eaa[_0x2acd15(0x1e1)];
+    _0x13136d++
+  ) {
+    const _0xfbe3d8 = (_0x13136d - _0x38867b + 0x1a) % 0x1a;
+    _0x939d3d[_0x2acd15(0x1e5)](_0x696eaa[_0xfbe3d8]);
+  }
+  const _0x525d66 = {};
+  _0x696eaa[_0x2acd15(0x1de)]((_0x40dd24, _0x1f5b20) => {
+    _0x525d66[_0x40dd24] = _0x939d3d[_0x1f5b20];
   });
-
-  const translatedString = str
-    .split("")
-    .map((value) => (value ? rot13Object[value] || value : value))
-    .join("")
-    .toLowerCase();
-
-  return translatedString;
+  const _0x1ee446 = _0x484f51[_0x2acd15(0x1ec)]("")
+    [_0x2acd15(0x1e4)]((_0x2ceba4) =>
+      _0x2ceba4 ? _0x525d66[_0x2ceba4] || _0x2ceba4 : _0x2ceba4
+    )
+    ["join"]("")
+    ["toLowerCase"]();
+  return _0x1ee446;
 };
+function _0x5072() {
+  const _0x3a3e11 = [
+    "1885104gJOHPM",
+    "length",
+    "11EYvqyc",
+    "20048430NNVyof",
+    "map",
+    "push",
+    "73915HFyuKa",
+    "BF8DC5352E01D6C08148G64BD3E0C47D",
+    "2449410rCcNic",
+    "1edbShh",
+    "208iLDeQW",
+    "5614406UwNbNx",
+    "split",
+    "332810suGyQR",
+    "163528QjztbN",
+    "forEach",
+    "18SAcnLG",
+  ];
+  _0x5072 = function () {
+    return _0x3a3e11;
+  };
+  return _0x5072();
+}
 
 export default encryptedAPIKey;
